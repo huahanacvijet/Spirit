@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
+.AppContainer {
+  position: relative;
+  width: 360px;
+  height: 500px;
+  background: url('./Graphics/Backgrounds/dayscene.png') no repeat center center;
+  background-size: cover;
+  border: 3px solid #7066C0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000050;
+  overflow: hidden;
+  font-family: 'Pixelify Sans', sans-serif;
+}
+
+.ToDoWrapper {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+body {
+  background: #8898EB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow:hidden;
+}
+
+.App {
+  text-align: center;
+}
+
+h1{
+  color: #FFCCFF;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+}
+
+.ToDoForm {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.todo-input {
+  border: 1px solid #FFFFFF;
+  padding: 0.3rem 0.6rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.todo-input::placeholder {
+  color: #ffffff99;
+}
+
+.todo-btn {
+  background-color: #7066C0;
+  border: none;
+  font-weight: bold;
+  color: #fff;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+}
+
+.ToDoListContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.ToDoGen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(136, 152, 235, 0.8);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ffffffaa;
+}
+
+.incompleted {
+  color: #fff;
+  cursor: pointer;
+}
+
+.completed {
+  color: #c5aeff;
+  cursor: pointer;
+}
+
+.icon-button {
+  width: 1.2rem;          /* Match size of FontAwesome icons */
+  height: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon-button:hover {
+  transform: scale(1.1);
+}
+
+.add-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #7066c0;
+  color: white;
+  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 3;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.hua {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  width: 48px;
+  height: auto;
+  background: none;
+  z-index: 3;
+}
+
+.hua img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.edit-icon {
+  margin-right: 0.75rem;
+  cursor: pointer;
+}
+
+.delete-icon {
+  margin-left: 0.75rem;
+  cursor: pointer;
+}
+
