@@ -13,7 +13,7 @@ export default function HuaAnimation() {
     const interval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * huaAnimations.length);
       setCurrentAnimation(huaAnimations[randomIndex]);
-    }, 8000 + Math.random() * 5000); // random 8–13 seconds
+    }, 20000 + Math.random() * 5000); // random 20–25 seconds
 
     return () => clearInterval(interval);
   }, []);

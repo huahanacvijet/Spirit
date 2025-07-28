@@ -43,9 +43,14 @@ body, html {
 
 h1 {
   text-align: center;
-  color: #FFCCFF;
+  color: #e2cff9;
   margin: 8px 0 0 0;
   font-size: 30px;
+  text-shadow:
+    -1px -1px 0 #704eaa,  
+     1px -1px 0 #c573dc,
+    -2px  2px 0 #704eaa,
+     1px  1px 0 #c573dc;
 }
 
 .window-controls {
@@ -66,7 +71,7 @@ h1 {
   position: relative;
   width: 90%;
   height: 500px;
-  background-image: url('./Graphics/Backgrounds/dayscene.png');
+  background-image: url('./Graphics/Backgrounds/bluehourscene.png');
   background-size:cover;
   background-position: center;
   margin: 0 auto;
@@ -76,6 +81,7 @@ h1 {
   padding: 30px;
   flex-direction: column;
   justify-content: flex-start;
+  border: 2px solid #404383;
 }
 
 .todo-list {
@@ -92,7 +98,7 @@ h1 {
   border-radius: 8px;
   padding: 8px 12px;
   margin: 8px 0;
-  width: 90%;
+  width: 100%;
   max-width: 500px;
   display: flex;
   justify-content: center;
@@ -107,23 +113,24 @@ h1 {
 .add-button {
   align-self: center;
   margin-top: auto;
+  margin-left: 140px;
   width: 25px;
   height: 25px;
-  image-rendering: pixelated;
-  box-shadow: 0 0 4px 3px rgba(255, 204, 255, 0.5);
+  box-shadow: 0 0 3px 1px rgba(170, 181, 232, 0.8);
   transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .add-button:hover {
-  box-shadow: 0 0 5px 3px rgba(255, 204, 255, 0.8);
+  box-shadow: 0 0 5px 3px rgba(186, 167, 229, 0.7);
 }
 
 .HuaAnimations {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  width: 70px;
+  width: 80px;
+  height: 80px;
 }
 
 .item-actions {
