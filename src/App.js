@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
 import './App.css';
 import { ToDoItem } from './ToDoItem';
+
+// Icons
+import ExitIcon from './Graphics/Interactives/Buttons/ExitIcon.png';
+import MinimiseIcon from './Graphics/Interactives/Buttons/MinimiseIcon.png';
+import AddIcon from './Graphics/Interactives/Buttons/AddIcon.png';
 import { updateBindingElement } from 'typescript';
+
+// Hua Animations Import and Array Declaring
+import HuaAnimation from './HuaAnimation';
 
 export default function App() {
   const[items, setItems] = useState([]); // Empty array to store to-do list items
@@ -42,19 +50,35 @@ export default function App() {
   //           - item: the to-do item data 
   //           - event handlers for updating, editing, deleting, and toggling
   return (
-    <div style={{textAlign: 'center', paddingTop: '50px'}}>
-      <button onClick={handleAdd}>Add Item</button> 
-      <div style={{marginTop: '30px'}}>
-        {items.map(item => (
-          <ToDoItem 
-            key={item.id}
-            item={item}
-            onUpdate={handleUpdate}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-            onToggle={handleToggle}
-          />
-        ))}
+    <div className="App">
+      <div className='app-container'>
+        <div className='window-bar'>
+          <div className='window-controls'>
+            <img src={ExitIcon} alt="Exit" />
+            <img src={MinimiseIcon} alt="Minimise" />
+          </div>
+          <h1>Daily Cultivation</h1>
+        </div>
+
+      <div className="background-frame"> 
+        <div className='todo'> 
+          {items.map(item => (
+            <ToDoItem 
+            // might be an issue with the position of the div here
+              key={item.id}
+              item={item}
+              onUpdate={handleUpdate}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+              onToggle={handleToggle}
+            />
+          ))}
+        
+          <img src={AddIcon} onClick={handleAdd} alt="add item" className="add-button" /> 
+
+          <HuaAnimation />
+        </div>
+      </div>
       </div>
     </div>
   );

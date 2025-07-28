@@ -2,6 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 // useRef: accessing DOM elements
 // useEffect: for side effects (like focusing an input)
 
+
+// Icons
+import EditIcon from './Graphics/Interactives/Buttons/EditIcon.png';
+import DeleteIcon from './Graphics/Interactives/Buttons/DeleteIcon.png';
+import CheckedIcon from './Graphics/Interactives/Checkbox/Checkbox-Ticked.png';
+import UncheckedIcon from './Graphics/Interactives/Checkbox/Checkbox-Empty.png';
+
 // Received props from parent (App.js) component
 export function ToDoItem({ item, onUpdate, onEdit, onDelete, onToggle}) {
     const [tempText, setTempText] = useState(item.text); // Initialises tempText with the text being edited.
@@ -24,43 +31,39 @@ export function ToDoItem({ item, onUpdate, onEdit, onDelete, onToggle}) {
 
     // GUI - adds a checkbox input with state switching for when an item is clicked
     return(
-        <div
-            style={{
-                border: '1px solid gray',
-                margin: '10px auto',
-                padding: '10px',
-                width: '300px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                position: 'relative',
-            }}
+        <div className='todo-item'
             onMouseEnter={() => setHovered(true)} // When mouse is on an item, setHovered(true)
             onMouseLeave={() => setHovered(false)} // When mouse is not on an item, setHovered(false)
         >
-            <input type="checkbox" checked={item.checked} onChange={() => onToggle(item.id)} /> 
-            
-            {item.editing ? ( // Conditional rendering, if editing: show text input, if not: show text (with strike if checked - but this will change to icon switch)
-                <input 
-                    ref={inputRef} 
-                    type="text" 
-                    value={tempText} 
-                    onChange={(e) => setTempText(e.target.value)} 
-                    onKeyDown={handleKeyPress} 
-                    style={{ flex: 1, marginLeft: '10px', marginRight: '10px'}} 
+            <div className='todo-item-content'>
+                <img src={item.checked ? CheckedIcon : UncheckedIcon}
+                    alt={item.checked ? "Checked" : "Unchecked"}
+                    onClick={() => onToggle(item.id)}
+                    className="checkbox-icon"
                 />
-            ) : (
-                <span style={{ flex: 1, marginLeft: '10px', marginRight: '10px', textDecoration: item.checked ? 'line-through' : 'none', }}>
-                    {item.text}
-                </span>
-            )}
+            
+                {item.editing ? ( // Conditional rendering, if editing: show text input, if not: show text (with strike if checked - but this will change to icon switch)
+                    <input 
+                        ref={inputRef} 
+                        type="text" 
+                        value={tempText} 
+                        onChange={(e) => setTempText(e.target.value)} 
+                        onKeyDown={handleKeyPress} 
+                        className='textbox'
+                    />
+                ) : (
+                    <span className={`item-text ${item.checked ? 'checked' : ''}`}>
+                        {item.text}
+                    </span>
+                )}
 
-            {hovered && !item.editing && ( // Shows edit/delete buttons only when hovering and not editing
-                <>
-                <button onClick={() => onEdit(item.id)}>Edit</button>
-                <button onClick={() => onDelete(item.id)}>Delete</button>
-                </>
-            )}
+                {hovered && !item.editing && ( // Shows edit/delete buttons only when hovering and not editing
+                    <div className="item-actions">
+                        <img src={EditIcon} onClick={() => onEdit(item.id)} alt="edit" />
+                        <img src={DeleteIcon} onClick={() => onDelete(item.id)} alt="delete" />
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
