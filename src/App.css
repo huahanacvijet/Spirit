@@ -74,8 +74,13 @@ h1 {
   border: 2px solid #404383;
 }
 
-.todo {
-  max-height: calc(100vh - 350px); /* take out 150px from viewport height */
+.todo-less {
+  max-height: calc(100vh - 350px); /* take out 350px from viewport height */
+  overflow-y: auto;
+}
+
+.todo-more {
+  max-height: calc(100vh - 230px); /* take out 150px from viewport height */
   overflow-y: auto;
 }
 
@@ -134,6 +139,7 @@ h1 {
   margin-right: 10px; 
   color: #E1D9F9;
   font-size: 16px;
+  word-break: break-word;
 }
 
 .item-text.checked {
@@ -192,16 +198,16 @@ h1 {
 .hua-chat-button {
   position: absolute;
   bottom: 60px;
-  left: 80px;
+  left: 73px;
   width: 30px;
   height: 30px;
   cursor: pointer;
-  box-shadow: 0 0 2px 1px rgba(255, 204, 255, 0.6);
-  transition: box-shadow 0.2s ease-in-out;
+  will-change: transform, filter;
+  transition: transform .2s ease-in-out, filter .15s ease-in-out;
 }
 
 .hua-chat-button:hover {
-  box-shadow: 0 0 4px 2px rgba(255, 204, 255, 0.8);
+  transform: scale(1.08);
 }
 
 /* Input from user */
@@ -235,11 +241,11 @@ h1 {
 }
 
 .send-button:hover {
-  box-shadow: 0 0 2px 1px rgba(117, 149, 255, 0.6);
+  box-shadow: 0 0 2px 1px rgba(117, 149, 255, 0.7);
 }
 
 .exit-button:hover {
-  box-shadow: 0 0 2px 1px rgba(250, 106, 190, 0.6);
+  box-shadow: 0 0 2px 1px rgba(250, 106, 190, 0.7);
 }
 
 /* Icon thinking gif ... */

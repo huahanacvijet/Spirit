@@ -11,14 +11,16 @@ import ChatIcon from '../Graphics/Interactives/Buttons/ChatIconFrame.png';
 const huaAnimations = [HuaIdle, HuaSitting];
 
 
-export default function HuaAnimation() {
+export default function HuaAnimation({chatOpen, setChatOpen}) {
   const[currentAnimation, setCurrentAnimation] = useState(HuaIdle);
+  
   const [hovered, setHovered] = useState(false);
-  const[chatOpen, setChatOpen] = useState(false);
   const[userMessage, setUserMessage] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const[reply, setReply] = useState("");
   const [messages, setMessages] = useState([]);
+
+  const[playFlute, setPlayFlute] = useState(false);
 
 
   // Cycle the chill animations (not specific animations)
@@ -68,16 +70,18 @@ export default function HuaAnimation() {
 
   
   return (
-    <div className="hua-container"
-    onMouseEnter={() => setHovered(true)}
-    onMouseLeave={() => setHovered(false)}
-    >
-    <img className="HuaAnimations" src={currentAnimation} alt="Hua" />
-    
-    {hovered && !chatOpen && 
-      (<img className="hua-chat-button" src={ChatIcon} alt="Icon for chat" 
-      onClick={() => setChatOpen(true)} />)
-    }
+    <div className="hua-container">
+      <div className="chat-start-container"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <img className="HuaAnimations" src={currentAnimation} alt="Hua"/>
+        
+        {hovered && !chatOpen && 
+          (<img className="hua-chat-button" src={ChatIcon} alt="Icon for chat" 
+          onClick={() => setChatOpen(true)} />)
+        }
+    </div>
 
     {isThinking && 
       (<img className="hua-thinking" src={ThinkingIcon} alt="thinking"/>)

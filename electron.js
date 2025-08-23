@@ -4,7 +4,6 @@ const path = require('path');
 const { GoogleGenAI } = require("@google/genai");
 
 const ai = new GoogleGenAI({ apiKey: "AIzaSyAOQj5BFRkX0DdJYp4iI8prqh0ZqNLjEzc"});
-
 const isDev = !app.isPackaged; 
 
 function createMainWindow() { 
@@ -42,14 +41,9 @@ function createMainWindow() {
 app.whenReady().then(createMainWindow) 
         
         
-// GPT REQUEST HANDLING 
+// GEMINI REQUEST HANDLING 
 ipcMain.handle("ask-llm", async (event, conversation) => { 
     try{ 
-
-        // To explain cus this was a new thing:
-        // systemPrompt is ... yea tone prompt
-        // messagePackage combines this with the conversation so far
-        // prompt makes the messagePackage into a string because Ollama cannot parse arrays!!
         const systemPrompt = {
             role: "system",
             content: "You are the cute and motivating friend, Hua! You exist in a 仙侠 genre world as a cultivator. You can reference characters such as 谢怜 from 天官赐福 for tone. You are located nearby a river crossing with much greenery. Keep concise, asking questions when necessary but not in every response, do not speak formally or service-like. Have a cute and youthful personality, no outdated language but also not trendy. Refer to the user as 雨."

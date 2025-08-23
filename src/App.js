@@ -18,6 +18,7 @@ export default function App() {
   const[items, setItems] = useState([]); // Empty array to store to-do list items
   const [nextId, setNextId] = useState(1); // To update ID
 
+  const [chatOpen, setChatOpen] = useState(false);
 
   // Spreads existing items and then adds a new item to the array, text is '' but editing is true because when adding, the input field should be visible and no text should be assigned yet
   const handleAdd = () => {
@@ -66,7 +67,7 @@ export default function App() {
         </div>
 
       <div className="background-frame"> 
-        <div className='todo'> 
+        <div className={chatOpen ? 'todo-less' : 'todo-more'}> 
           {items.map(item => (
             <ToDoItem 
             // might be an issue with the position of the div here
