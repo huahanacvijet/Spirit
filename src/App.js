@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import './App.css';
-import { ToDoItem } from './ToDoItem';
+import { ToDoItem } from './Components/ToDoItem';
+
+// Commented vers //
+
 
 // Icons
 import ExitIcon from './Graphics/Interactives/Buttons/ExitIcon.png';
@@ -9,11 +12,12 @@ import AddIcon from './Graphics/Interactives/Buttons/AddIcon.png';
 import { updateBindingElement } from 'typescript';
 
 // Hua Animations Import and Array Declaring
-import HuaAnimation from './HuaAnimation';
+import HuaAnimation from './Components/HuaAnimation';
 
 export default function App() {
   const[items, setItems] = useState([]); // Empty array to store to-do list items
   const [nextId, setNextId] = useState(1); // To update ID
+
 
   // Spreads existing items and then adds a new item to the array, text is '' but editing is true because when adding, the input field should be visible and no text should be assigned yet
   const handleAdd = () => {
@@ -42,6 +46,7 @@ export default function App() {
   const handleToggle = (id) => {
     setItems(items.map(item => item.id === id ? {...item, checked: !item.checked } : item));
   };
+
 
   // GUI - shows 'add item' button to trigger handleAdd
   //     - maps through all items and renders a ToDoItem component for each
@@ -76,7 +81,7 @@ export default function App() {
         
           <img src={AddIcon} onClick={handleAdd} alt="add item" className="add-button" /> 
 
-          <HuaAnimation />
+          <HuaAnimation chatOpen={chatOpen} setChatOpen={setChatOpen}/>
         </div>
       </div>
       </div>

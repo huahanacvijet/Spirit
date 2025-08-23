@@ -4,10 +4,10 @@ import React, { useState, useRef, useEffect } from 'react';
 
 
 // Icons
-import EditIcon from './Graphics/Interactives/Buttons/EditIcon.png';
-import DeleteIcon from './Graphics/Interactives/Buttons/DeleteIcon.png';
-import CheckedIcon from './Graphics/Interactives/Checkbox/Checkbox-Ticked.png';
-import UncheckedIcon from './Graphics/Interactives/Checkbox/Checkbox-Empty.png';
+import EditIcon from '../Graphics/Interactives/Buttons/EditIcon.png';
+import DeleteIcon from '../Graphics/Interactives/Buttons/DeleteIcon.png';
+import CheckedIcon from '../Graphics/Interactives/Checkbox/Checkbox-Ticked.png';
+import UncheckedIcon from '../Graphics/Interactives/Checkbox/Checkbox-Empty.png';
 
 // Received props from parent (App.js) component
 export function ToDoItem({ item, onUpdate, onEdit, onDelete, onToggle}) {
@@ -25,7 +25,11 @@ export function ToDoItem({ item, onUpdate, onEdit, onDelete, onToggle}) {
     // When e = 'Enter' key, it saves changes (saves text as the new value)
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            onUpdate(item.id, tempText.trim());
+            if(tempText.trim() !== "") {
+                onUpdate(item.id, tempText.trim());
+            } else {
+                onDelete(item.id);
+            }
         }
     };
 
@@ -42,15 +46,18 @@ export function ToDoItem({ item, onUpdate, onEdit, onDelete, onToggle}) {
                     className="checkbox-icon"
                 />
             
+
                 {item.editing ? ( // Conditional rendering, if editing: show text input, if not: show text (with strike if checked - but this will change to icon switch)
+                    <div className="todolist-textbox">
                     <input 
+                        className='textbox'
                         ref={inputRef} 
                         type="text" 
                         value={tempText} 
                         onChange={(e) => setTempText(e.target.value)} 
                         onKeyDown={handleKeyPress} 
-                        className='textbox'
                     />
+                    </div>
                 ) : (
                     <span className={`item-text ${item.checked ? 'checked' : ''}`}>
                         {item.text}
