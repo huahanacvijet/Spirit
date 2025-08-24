@@ -5,13 +5,15 @@ const { GoogleGenAI } = require("@google/genai");
 
 const ai = new GoogleGenAI({ apiKey: "AIzaSyAOQj5BFRkX0DdJYp4iI8prqh0ZqNLjEzc"});
 const isDev = !app.isPackaged; 
+let mainWindow;
 
 function createMainWindow() { 
-    const mainWindow = new BrowserWindow({ 
+    mainWindow = new BrowserWindow({ 
         // Sets window title and dimensions 
         title: 'Daily Cultivation', 
         width: 400, 
         height: 630, 
+        frame: false, // Get rid of that oogly ass frame
         resizable: false, 
         maximizable: false, 
         minimizable: true, 
@@ -39,7 +41,20 @@ function createMainWindow() {
 } 
 // Starts the app when electron is ready 
 app.whenReady().then(createMainWindow) 
-        
+    
+// Handle minimise
+ipcMain.on('minimise-window', () => {
+    if(mainWindow) {
+        mainWindow.minimize();
+    }
+});
+
+// Handle close
+ipcMain.on('exit-window', () => {
+    if(mainWindow) {
+        mainWindow.close();
+    }
+});
         
 // GEMINI REQUEST HANDLING 
 ipcMain.handle("ask-llm", async (event, conversation) => { 

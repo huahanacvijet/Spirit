@@ -20,6 +20,8 @@ body, html {
   justify-content: flex-start;
   height: 100%;
   width: 100%;
+  border: 2px solid rgba(94, 72, 155);
+  border-radius: 2%;
 }
 
 .window-bar {
@@ -27,15 +29,16 @@ body, html {
   flex-direction: column; /* stack the title and controls */
   align-items: center;
   width: 100%;
-  padding: 10px 20px;
   background-color: #9097FF;
   -webkit-app-region: drag; /* allows dragging window */
 }
+
 
 h1 {
   text-align: center;
   color: #e2cff9;
   margin: 8px 0 0 0;
+  padding: 10px;
   font-size: 30px;
   text-shadow:
     -1px -1px 0 #704eaa,  
@@ -44,23 +47,30 @@ h1 {
      1px  1px 0 #c573dc;
 }
 
+.window-controls-container {
+  width: 100%;
+  border-bottom: 2px solid rgba(94, 72, 155);
+}
+
 .window-controls {
   display: flex;
-  align-self:flex-end;
+  align-self:flex-start;
+  padding: 3.5px 20px;
+  background-color: #4d54ab;
   gap: 6px;
-  -webkit-app-region: no-drag; /* make buttons clickable */
 }
 
 .window-controls img {
   width: 20px;
-  height: 20px;
+  top: 20px;
   cursor: pointer;
+  -webkit-app-region: no-drag; /* make buttons click not drag */
 }
 
 .background-frame {
   position: relative;
   width: 90%;
-  height: 495px;
+  height: 513px;
   background-image: url('./Graphics/Backgrounds/bluehourscene.png');
   background-size:cover;
   background-position: center;

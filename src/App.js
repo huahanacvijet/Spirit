@@ -20,6 +20,20 @@ export default function App() {
 
   const [chatOpen, setChatOpen] = useState(false);
 
+  // Window Controls
+  const handleExit = () => {
+    if (window.electronAPI) {
+      window.electronAPI.exit();
+    }
+  };
+
+  const handleMinimise = () => {
+    if (window.electronAPI) {
+      window.electronAPI.minimise();
+    }
+  };
+
+
   // Spreads existing items and then adds a new item to the array, text is '' but editing is true because when adding, the input field should be visible and no text should be assigned yet
   const handleAdd = () => {
     setItems([...items, {id: nextId, text: '', checked: false, editing: true}]);
@@ -59,11 +73,15 @@ export default function App() {
     <div className="App">
       <div className='app-container'>
         <div className='window-bar'>
-          <div className='window-controls'>
-            <img src={ExitIcon} alt="Exit" />
-            <img src={MinimiseIcon} alt="Minimise" />
+          <div className='window-controls-container'>
+            <div className='window-controls'>
+            <img src={ExitIcon} onClick={handleExit} alt="Exit" />
+            <img src={MinimiseIcon} onClick={handleMinimise} alt="Minimise" />
+            </div>
           </div>
-          <h1>Daily Cultivation</h1>
+          <div className='title'>
+            <h1>Daily Cultivation</h1>
+          </div>
         </div>
 
       <div className="background-frame"> 
