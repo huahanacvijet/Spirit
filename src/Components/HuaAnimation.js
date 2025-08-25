@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // Import Hua Animations
 import HuaIdle from '../Graphics/Hua-Animations/Idle.gif';
 import HuaSitting from '../Graphics/Hua-Animations/Sitting.gif'
+import HuaFluteUntamed from '../Graphics/Hua-Animations/Hua-Flute-Playing-TheUntamed.gif';
+
+// Import Audio
+import UntamedAudio from '../Audio/Hua-Flute-TheUntamed.wav';
 
 // Buttons
 import ThinkingIcon from '../Graphics/Interactives/LoadingStates/ThinkingIcon.gif';
@@ -10,29 +14,52 @@ import ChatIcon from '../Graphics/Interactives/Buttons/ChatIconFrame.png';
 
 const huaAnimations = [HuaIdle, HuaSitting];
 
-
 export default function HuaAnimation({chatOpen, setChatOpen}) {
   const[currentAnimation, setCurrentAnimation] = useState(HuaIdle);
-  
+  const[playFlute, setPlayFlute] = useState(false);
+
   const [hovered, setHovered] = useState(false);
   const[userMessage, setUserMessage] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const[reply, setReply] = useState("");
   const [messages, setMessages] = useState([]);
 
-  const[playFlute, setPlayFlute] = useState(false);
-
+  // Flute Songs
+  const theUntamedFlute = useRef(null);
 
   // Cycle the chill animations (not specific animations)
   useEffect(() => {
-    const interval = setInterval(() => {
+    if(playFlute) return; // Pause switching
+
+    const switchHua = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * huaAnimations.length);
       setCurrentAnimation(huaAnimations[randomIndex]);
-    }, 20000 + Math.random() * 5000); // random 20–25 seconds
+    }, 36000 + Math.random() * 5000); // random 36–41 seconds
 
-    return () => clearInterval(interval);
+    return () => clearInterval(switchHua);
+  }, [playFlute]);
+
+
+  // Flute override
+  useEffect(() => {
+    const startPeformance = setInterval(() => {
+      setPlayFlute(true);
+      setCurrentAnimation(HuaFluteUntamed);
+
+      const untamed = theUntamedFlute.current;
+      // can also set when to start from with audio.currentTime = 5; (5 secs)
+      untamed.volume = 0.2;
+      untamed.play();
+
+      setTimeout(() => {
+        untamed.pause();
+        untamed.currentTime = 0; // reset
+        setCurrentAnimation(HuaIdle);
+        setPlayFlute(false);
+      }, untamed.duration * 1000);
+    }, (300000) + Math.random() * (300000)); // 5-10 mins
+    return () => clearInterval(startPeformance);
   }, []);
-
 
   // Send Message to Gemini
   const sendMessage = async () => {
@@ -76,7 +103,8 @@ export default function HuaAnimation({chatOpen, setChatOpen}) {
         onMouseLeave={() => setHovered(false)}
       >
         <img className="HuaAnimations" src={currentAnimation} alt="Hua"/>
-        
+        <audio ref={theUntamedFlute} src={UntamedAudio} preload="auto" />
+
         {hovered && !chatOpen && 
           (<img className="hua-chat-button" src={ChatIcon} alt="Icon for chat" 
           onClick={() => setChatOpen(true)} />)

@@ -20,7 +20,7 @@ body, html {
   justify-content: flex-start;
   height: 100%;
   width: 100%;
-  border: 2px solid rgba(94, 72, 155);
+  border: 2px solid rgba(105, 105, 223);
   border-radius: 2%;
 }
 
@@ -49,14 +49,14 @@ h1 {
 
 .window-controls-container {
   width: 100%;
-  border-bottom: 2px solid rgba(94, 72, 155);
+  border-bottom: 2px solid #6e76dc;
 }
 
 .window-controls {
   display: flex;
   align-self:flex-start;
-  padding: 3.5px 20px;
-  background-color: #4d54ab;
+  padding: 5px 20px;
+  background-color: #6e76dc;
   gap: 6px;
 }
 
@@ -70,7 +70,7 @@ h1 {
 .background-frame {
   position: relative;
   width: 90%;
-  height: 513px;
+  height: 510px;
   background-image: url('./Graphics/Backgrounds/bluehourscene.png');
   background-size:cover;
   background-position: center;
