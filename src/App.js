@@ -9,7 +9,6 @@ import { ToDoItem } from './Components/ToDoItem';
 import ExitIcon from './Graphics/Interactives/Buttons/ExitIcon.png';
 import MinimiseIcon from './Graphics/Interactives/Buttons/MinimiseIcon.png';
 import AddIcon from './Graphics/Interactives/Buttons/AddIcon.png';
-import { updateBindingElement } from 'typescript';
 
 // Hua Animations Import and Array Declaring
 import HuaAnimation from './Components/HuaAnimation';
