@@ -57,7 +57,7 @@ export default function HuaAnimation({chatOpen, setChatOpen}) {
         setCurrentAnimation(HuaIdle);
         setPlayFlute(false);
       }, untamed.duration * 1000);
-    }, (300000) + Math.random() * (300000)); // 5-10 mins
+    }, (600000) + Math.random() * (600000)); // 10-20 mins
     return () => clearInterval(startPeformance);
   }, []);
 

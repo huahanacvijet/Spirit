@@ -18,6 +18,7 @@ export default function App() {
   const [nextId, setNextId] = useState(1); // To update ID
 
   const [chatOpen, setChatOpen] = useState(false);
+  // const [demonArrived, setDemonArrived] = useState(false);
 
   // Window Controls
   const handleExit = () => {
