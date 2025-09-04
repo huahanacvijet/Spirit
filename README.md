@@ -1,6 +1,8 @@
 # Welcome to: Spirit✨🏮
 ### Demo:
- 
+[![Spirit Demo](./resources-readme/Spirit-Demo-Thumbnail.png)](./resources-readme/Spirit-Demo.mp4)
+
+
 <br></br>
 ### Main Features:
 - <b>To Do List Functionality:</b> 📋
