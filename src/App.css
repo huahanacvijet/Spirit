@@ -90,7 +90,7 @@ h1 {
 }
 
 .todo-more {
-  max-height: calc(100vh - 230px); /* take out 150px from viewport height */
+  max-height: calc(100vh - 237px); /* take out 225px from viewport height */
   overflow-y: auto;
 }
 
