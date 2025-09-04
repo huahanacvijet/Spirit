@@ -3,6 +3,7 @@ import './App.css';
 import { ToDoItem } from './Components/ToDoItem';
 
 // Commented vers //
+// This version of the code has comments for those learning from it //
 
 
 // Icons
@@ -10,12 +11,12 @@ import ExitIcon from './Graphics/Interactives/Buttons/ExitIcon.png';
 import MinimiseIcon from './Graphics/Interactives/Buttons/MinimiseIcon.png';
 import AddIcon from './Graphics/Interactives/Buttons/AddIcon.png';
 
-// Hua Animations Import and Array Declaring
+// Hua Animations Import
 import HuaAnimation from './Components/HuaAnimation';
 
 export default function App() {
   const[items, setItems] = useState([]); // Empty array to store to-do list items
-  const [nextId, setNextId] = useState(1); // To update ID
+  const [nextId, setNextId] = useState(1); // To assign and update ID
 
   const [chatOpen, setChatOpen] = useState(false);
   // const [demonArrived, setDemonArrived] = useState(false);
@@ -33,8 +34,7 @@ export default function App() {
     }
   };
 
-
-  // Spreads existing items and then adds a new item to the array, text is '' but editing is true because when adding, the input field should be visible and no text should be assigned yet
+  // For beginners: this spreads existing items and then adds a new item to the array, text is '' but editing is true because when adding, the input field should be visible and no text should be assigned yet
   const handleAdd = () => {
     setItems([...items, {id: nextId, text: '', checked: false, editing: true}]);
     setNextId(nextId + 1); // Post-increment after adding new to-do list item
