@@ -48,7 +48,7 @@ export default function HuaAnimation({chatOpen, setChatOpen}) {
 
       const untamed = theUntamedFlute.current;
       // can also set when to start from with audio.currentTime = 5; (5 secs)
-      untamed.volume = 0.2;
+      untamed.volume = 0.1;
       untamed.play();
 
       setTimeout(() => {
@@ -57,7 +57,7 @@ export default function HuaAnimation({chatOpen, setChatOpen}) {
         setCurrentAnimation(HuaIdle);
         setPlayFlute(false);
       }, untamed.duration * 1000);
-    }, (60000) + Math.random() * (30000)); // 10-20 mins // 600000
+    }, (900000) + Math.random() * (600000)); // 15-25 mins 
     return () => clearInterval(startPeformance);
   }, []);
 
