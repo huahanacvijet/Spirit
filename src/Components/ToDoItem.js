@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 // useRef: accessing DOM elements
-// useEffect: for side effects (like focusing an input)
+// useEffect: for side effects (like focusing on an input)
 
 
 // Icons
@@ -36,11 +36,12 @@ export function ToDoItem({ item, onUpdate, onEdit, onDelete, onToggle}) {
     // GUI - adds a checkbox input with state switching for when an item is clicked
     return(
         <div className='todo-item'
-            onMouseEnter={() => setHovered(true)} // When mouse is on an item, setHovered(true)
-            onMouseLeave={() => setHovered(false)} // When mouse is not on an item, setHovered(false)
+            // .. pretty self explanatory
+            onMouseEnter={() => setHovered(true)} 
+            onMouseLeave={() => setHovered(false)} 
         >
             <div className='todo-item-content'>
-                <img src={item.checked ? CheckedIcon : UncheckedIcon}
+                <img src={item.checked ? CheckedIcon : UncheckedIcon} 
                     alt={item.checked ? "Checked" : "Unchecked"}
                     onClick={() => onToggle(item.id)}
                     className="checkbox-icon"

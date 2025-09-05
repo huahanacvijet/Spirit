@@ -48,7 +48,7 @@ export default function HuaAnimation({chatOpen, setChatOpen}) {
 
       const untamed = theUntamedFlute.current;
       // can also set when to start from with audio.currentTime = 5; (5 secs)
-      untamed.volume = 0.1;
+      untamed.volume = 0.1; // should be very quiet but 0.2 was actually quite loud on my computer...
       untamed.play();
 
       setTimeout(() => {
