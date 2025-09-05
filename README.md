@@ -1,7 +1,8 @@
 # Welcome to: Spirit✨🏮
 ### Demo:
-[![Spirit Demo](./resources-readme/Spirit-Demo-Thumbnail.png)](./resources-readme/Spirit-Demo.mp4)
-
+<a href="https://player.vimeo.com/video/1116131639?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479">
+  <img src="./resources-readme/Spirit-Demo-Thumbnail.png" width="600" />
+</a>
 
        
 ### Main Features:
